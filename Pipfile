@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+pymongo = "*"
+bcrypt = "*"
+records = "*"
+mongo = "*"
+ask = "*"
+urllib3 = "*"
+requests = "*"
+aiohttp = "*"
+apscheduler = "*"
+sync = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
