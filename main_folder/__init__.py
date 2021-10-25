@@ -1,10 +1,11 @@
 from flask import Flask
 from flask_login import LoginManager
-
 from flask_mongoengine import MongoEngine
+
 
 db = MongoEngine()
 login_manager = LoginManager()
+
 
 def create_app():
     app = Flask(__name__)
@@ -13,7 +14,6 @@ def create_app():
     app.config['SESSION_TYPE'] = 'filesystem'
 
     login_manager.init_app(app)
-
 
     app.config['MONGODB_SETTINGS'] = {
         'db': 'currency_db',
@@ -25,7 +25,9 @@ def create_app():
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
-    from .main import main as main_blueprint
+    from .route_links import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from .tasks_scheduler import scheduler
 
     return app
