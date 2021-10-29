@@ -2,7 +2,7 @@ from functools import wraps
 import jwt
 from flask import jsonify, request
 from .auth import JWT_SECRET, JWT_ALGORITHM
-from .models import User
+from .models import User, BlackJWTList
 
 
 def token_required(f):
@@ -17,8 +17,11 @@ def token_required(f):
         if not token:
             return jsonify({'message': 'a valid token is missing'})
 
+        for i in BlackJWTList.objects():
+            if token == i['data']:
+                return jsonify({'message': 'User is not logged in'})
+
         try:
-            # print(jwt.decode(token, JWT_SECRET, JWT_ALGORITHM))
             data = jwt.decode(token, JWT_SECRET, JWT_ALGORITHM)
             current_user = User.objects(email=data['email']).first()
 

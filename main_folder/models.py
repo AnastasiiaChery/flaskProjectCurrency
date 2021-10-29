@@ -25,7 +25,7 @@ class User(db.Document):
         return unicode(self.id)
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<User %r>' % self.name
 
 
 class Currency(db.Document):
@@ -36,4 +36,8 @@ class Currency(db.Document):
     date = db.DateTimeField(default=datetime.now, blank=True)
 
     def __repr__(self):
-        return '<Currency %r>' % (self.name)
+        return '<Currency %r>' % self.name
+
+
+class BlackJWTList(db.Document):
+    data = db.StringField()

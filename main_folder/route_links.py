@@ -1,7 +1,4 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
-
-
 from main_folder.functions import data_filter, base_currency, curr_hisrory, curr_min, curr_max, curr_mean, converter
 from main_folder.token_required import token_required
 
@@ -13,7 +10,6 @@ main = Blueprint('main', __name__)
 @main.route('/')
 @token_required
 def home_page(*args, **kwargs):
-
     list_curr = data_filter(request.form.get('date'))
 
     return jsonify(list_curr)
@@ -33,12 +29,12 @@ def select_currency_by_data(*args, **kwargs):
 @token_required
 def change_base_currency(*args, **kwargs):
     list_curr = data_filter(request.form.get('date'))
-    curr_id= request.form.get('curr_id')
+    curr_id = request.form.get('curr_id')
     new_list = base_currency(curr_id, list_curr)
     return jsonify(new_list)
 
 
-#Mean, minimum, maximum. Period from ... to. If the currency code is not specified,
+# Mean, minimum, maximum. Period from ... to. If the currency code is not specified,
 # the entire list is returned. If specified, one currency.
 
 @main.route('/characteristic', methods=['POST'])
@@ -71,7 +67,3 @@ def currency_converter(*args, **kwargs):
     converted_sum = converter(new_list, request.form.get('from'), request.form.get('sum'))
 
     return jsonify(converted_sum)
-
-
-
-

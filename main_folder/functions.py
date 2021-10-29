@@ -1,7 +1,8 @@
 import datetime
-import pandas as pd
 
+import pandas as pd
 from pymongo import MongoClient
+
 from . import db
 
 # Connect to mongo db
@@ -57,8 +58,8 @@ def curr_hisrory(st_date, ls_date):
 # Select columns rate and currency
 def selected_df(curr_list):
     curr_list_df = pd.DataFrame(curr_list)
-    selected_df = curr_list_df[['rate', 'code']]
-    return selected_df
+    selected_df_ls = curr_list_df[['rate', 'code']]
+    return selected_df_ls
 
 
 # Min
