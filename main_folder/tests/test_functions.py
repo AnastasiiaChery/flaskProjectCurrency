@@ -1,10 +1,9 @@
-from main_folder.functions import base_currency, data_filter, curr_hisrory, selected_df, curr_min, curr_max, curr_mean, \
-    converter
+from main_folder.functions import data_filter
+from unittest.mock import Mock
 
 # ?????????????????????????????
 # @pytest.fixture()
 # def tasks_db(tmpdir):
-#     """Подключение к БД перед тестами, отключение после."""
 #     # Setup : start db
 #     tasks.start_tasks_db(str(tmpdir), 'tiny')
 #
@@ -19,7 +18,6 @@ from main_folder.functions import base_currency, data_filter, curr_hisrory, sele
 #                           Task('breathe', 'BRIAN', True),
 #                           Task('exercise', 'BrIaN', False)])
 # def test_add_2(task):
-#     """Демонстрирует параметризацию с одним параметром."""
 #     task_id = tasks.add(task)
 #     t_from_db = tasks.get(task_id)
 #     assert equivalent(t_from_db, task)
@@ -34,10 +32,6 @@ def test_data_filter():
     assert len(t2) == 60
     assert t3 == []
     assert len(t4) == 60
-
-
-
-
 
 # base_currency()
 # data_filter()

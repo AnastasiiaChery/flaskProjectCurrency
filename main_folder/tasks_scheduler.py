@@ -1,8 +1,8 @@
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+from apscheduler.jobstores.memory import MemoryJobStore
+from apscheduler.jobstores.mongodb import MongoDBJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
 from pymongo import MongoClient
-from apscheduler.jobstores.mongodb import MongoDBJobStore
-from apscheduler.jobstores.memory import MemoryJobStore
-from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 
 from main_folder.loading_currencies import get_data_from_app
 

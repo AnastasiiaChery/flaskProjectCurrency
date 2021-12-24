@@ -51,7 +51,7 @@ def currency_characteristic(*args, **kwargs):
 
     result = summary.to_dict()['rate']
 
-    curr_code = request.form.get('code')
+    curr_code = request.form.get('code').upper()
     if not curr_code:
         return jsonify(result)
 
@@ -63,7 +63,7 @@ def currency_characteristic(*args, **kwargs):
 @token_required
 def currency_converter(*args, **kwargs):
     list_curr = data_filter(request.form.get('date'))
-    new_list = base_currency(request.form.get('to'), list_curr)
-    converted_sum = converter(new_list, request.form.get('from'), request.form.get('sum'))
+    new_list = base_currency(request.form.get('to').upper(), list_curr)
+    converted_sum = converter(new_list, request.form.get('from').upper(), request.form.get('sum'))
 
     return jsonify(converted_sum)

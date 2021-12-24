@@ -23,7 +23,7 @@ def token_required(f):
 
         try:
             data = jwt.decode(token, JWT_SECRET, JWT_ALGORITHM)
-            current_user = User.objects(email=data['email']).first()
+            current_user = User.objects(email=data['email']).get()
 
         except:
             return jsonify({'message': 'token is invalid'})

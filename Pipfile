@@ -17,6 +17,10 @@ apscheduler = "*"
 sync = "*"
 task = "*"
 decorators = "*"
+self = "*"
+app = "*"
+pook = "*"
+pygithub = "*"
 
 [dev-packages]
 
