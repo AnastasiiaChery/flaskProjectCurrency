@@ -20,7 +20,7 @@ job_defaults = {
     'coalesce': False,
     'max_instances': 3
 }
-scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults)
+scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults, timezone="Europe/Berlin")
 scheduler.add_job(get_data_from_app, 'cron', day='1-31', hour=16, minute=30)
 
 try:

@@ -19,12 +19,16 @@ def create_curr(currency_code, code, name, rate):
 
 
 def get_data_from_app():
-    res = requests.get('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
+    target_url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
+
+    res = requests.get(target_url)
     response = json.loads(res.text)
     df = pd.DataFrame(response)
+
     for index, row in df.iterrows():
         currency_code = row['r030']
         code = row['cc']
         name = row['txt']
         rate = row['rate']
+
         create_curr(currency_code, code, name, rate)
